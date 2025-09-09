@@ -32,19 +32,19 @@ app.get("/", (req, res) => {
 })
 
 // handle the all related courses routes
-// app.use("/api/courses", coursesRouter);
-// app.use("/api/users", usersRouter);
+app.use("/api/courses", coursesRouter);
+app.use("/api/users", usersRouter);
 
 // handle the unkown routes
-// app.all('{*splat}', (req, res) => {
-//   res.status(404).json({status: "error", message: "Path Not found" });
-// });
+app.all('*', (req, res) => {
+  res.status(404).json({status: "error", message: "Path Not found" });
+});
 
 // handle the global handlers errors
-// app.use((error, req, res, next) => {
-//   console.log("i am in global error handler");
-//   res.status(error.statusCode || 500).json({status: error.statusText , message: error.message || error.errors, des: "i am from global error handler" });
-// });
+app.use((error, req, res, next) => {
+  console.log("i am in global error handler");
+  res.status(error.statusCode || 500).json({status: error.statusText , message: error.message || error.errors, des: "i am from global error handler" });
+});
 
 app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);
