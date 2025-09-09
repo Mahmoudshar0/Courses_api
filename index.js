@@ -26,6 +26,11 @@ app.use(morgan("dev"));
 // handle the json body request
 app.use(express.json());
 
+// 
+app.use("/", (req, res) => {
+  res.send({path:"hello world"});
+})
+
 // handle the all related courses routes
 app.use("/api/courses", coursesRouter);
 app.use("/api/users", usersRouter);
@@ -43,4 +48,4 @@ app.use((error, req, res, next) => {
 
 app.listen(port, "localhost", () => {
   console.log(`server started at http://localhost:${port}`);
-});
+}); 
