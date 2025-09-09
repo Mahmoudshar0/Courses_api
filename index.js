@@ -46,6 +46,6 @@ app.use((error, req, res, next) => {
   res.status(error.statusCode || 500).json({status: error.statusText , message: error.message || error.errors, des: "i am from global error handler" });
 });
 
-app.listen(port, "localhost", () => {
+app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);
 }); 
